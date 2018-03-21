@@ -1,0 +1,14 @@
+<div class="card border-0">
+  <div class="card-body">
+    <div class="row">
+      <div class="col text-center" [class.text-primary]="!inComposeView" (click)="setBrowseView()">
+        <h1><i class="fa fa-th-list" aria-hidden="true"></i></h1>
+        <h5>Browse</h5>
+      </div>
+      <div class="col text-center" [class.text-primary]="inComposeView" (click)="setComposeView()">
+        <h1><i class="fa fa-pencil" aria-hidden="true"></i></h1>
+        <h5>Compose</h5>
+      </div>
+    </div>
+  </div>
+</div>

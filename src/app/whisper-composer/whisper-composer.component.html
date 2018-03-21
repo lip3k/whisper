@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <div class="overlay text-center" *ngIf="recentlyWhispered && !whisperSubmitted">
+      <h1 class="display-1"><i class="fa fa-ban" aria-hidden="true"></i></h1>
+      <h6>Wait {{ timeUntilNextWhisper }} minute{{ timeUntilNextWhisper > 1 ? 's' : '' }} before <br> posting another whisper...</h6>
+    </div>
+    <div class="overlay text-center text-success" *ngIf="whisperSubmitted">
+      <h1 class="display-1"><i class="fa fa-check-square-o" aria-hidden="true"></i></h1>
+      <h6>Your whisper <br> has been submitted!</h6>
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="whisperText">Content ({{ maxWhisperLength - whisper.text.length }} characters left)</label>
+        <textarea class="form-control" [class.is-invalid]="whisper.text.length < minWhisperLength" id="whisperText" name="whisperText" #whisperText rows="3" [maxlength]="maxWhisperLength" [(ngModel)]="whisper.text"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [class.is-invalid]="whisper.author.length < minAuthorLength" id="whisperAuthor" name="whisperAuthor" #whisperAuthor placeholder="Author" [(ngModel)]="whisper.author" [minlength]="minAuthorLength" [maxlength]="maxAuthorLength">
+      </div>
+      <div class="form-group">
+        <re-captcha (captchaResponse)="verifyCaptcha($event)" site_key="'6Lcu300UAAAAAK-1ALY3PvID0ImcnEXB5Mi0xXlP'"></re-captcha>
+      </div>
+    </form>
+    <div class="form-group">
+      <button class="btn btn-primary btn-outline-primary"
+              [disabled]="!validateFields()"
+              (click)="submitWhisper(whisper)"
+              [title]="captchaVerified ? 'Submit new whisper' : 'Verify captcha to proceed'">Submit</button>
+    </div>
+  </div>
+</div>
+
+
