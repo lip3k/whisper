@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'scss/variables';
+
+html {
+  background: linear-gradient($color-primary, darken($color-primary, 10%)) !important;
+  min-height: 100vh;
+}
+
+body {
+  background: none !important;
+}
+
+.card {
+  margin-bottom: 0.5rem;
+  box-shadow: $default-shadow;
+}
+
+.color-blue {
+  color: #1e90ff;
+}
+
+@media (max-width: 320px) {
+  .g-recaptcha {
+    transform: scale(0.83);
+    transform-origin: 0 0;
+  }
+}

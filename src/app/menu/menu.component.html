@@ -1,14 +1,5 @@
-<div class="card border-0">
-  <div class="card-body">
-    <div class="row">
-      <div class="col text-center" [class.text-primary]="!inComposeView" (click)="setBrowseView()">
-        <h1><i class="fa fa-th-list" aria-hidden="true"></i></h1>
-        <h5>Browse</h5>
-      </div>
-      <div class="col text-center" [class.text-primary]="inComposeView" (click)="setComposeView()">
-        <h1><i class="fa fa-pencil" aria-hidden="true"></i></h1>
-        <h5>Compose</h5>
-      </div>
+  <div class="card-body" style="padding-right: 0;">
+    <div class="d-flex flex-row-reverse">
+      <app-menu-btn *ngFor="let btn of menuConfig" [icon]="btn.icon" [text]="btn.text" [isActive]="isActiveBtn(btn.text)" (onButtonClicked)="setView(btn.text)" ></app-menu-btn>
     </div>
   </div>
-</div>

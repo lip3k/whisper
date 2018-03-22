@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import {Whisper} from '../models/whisper.model';
-// https://whispers-api.herokuapp.com
-const API_URL = 'http://127.0.0.1:3000';
+
+const API_URL = 'https://whispers-api.herokuapp.com';
+// const API_URL = 'http://127.0.0.1:3000';
 
 @Injectable()
 export class ApiService {

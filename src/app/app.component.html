@@ -1,13 +1,11 @@
-<div class="container">
-
-  <h1 class="display-3 text-center">WHISPER</h1>
+<div class="container" style="padding-top: 0.5rem;">
 
   <app-menu (onChangeView)="handleViewChange($event)"></app-menu>
 
-  <app-whisper-composer *ngIf="showComposer" (onNewWhisper)="getWhispers()"></app-whisper-composer>
-
-  <ng-container *ngIf="whispers && !showComposer">
-    <app-whisper-card *ngFor="let whisper of whispers" [data]="whisper" (onLove)="getWhispers()"></app-whisper-card>
+  <ng-container [ngSwitch]="activeView" *ngIf="whispers">
+    <app-whisper-composer *ngSwitchCase="'Compose'" (onNewWhisper)="getWhispers()"></app-whisper-composer>
+    <ng-container *ngSwitchCase="'Browse'">
+      <app-whisper-card *ngFor="let whisper of whispers" [data]="whisper" (onLove)="getWhispers()"></app-whisper-card>
+    </ng-container>
   </ng-container>
-
 </div>

@@ -5,17 +5,15 @@ import {Whisper} from './models/whisper.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
   whispers: Whisper[];
 
-  showComposer: boolean;
+  activeView: string;
 
-  constructor(private apiService: ApiService) {
-    this.showComposer = false;
-  }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.getWhispers();
@@ -27,7 +25,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  handleViewChange(inComposerView) {
-    this.showComposer = inComposerView;
+  handleViewChange(viewName: string) {
+    this.activeView = viewName;
   }
 }

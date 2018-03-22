@@ -9,7 +9,7 @@ const TEN_MINUTES = 10 * 60 * 1000;
 @Component({
   selector: 'app-whisper-composer',
   templateUrl: './whisper-composer.component.html',
-  styleUrls: ['./whisper-composer.component.css']
+  styleUrls: ['./whisper-composer.component.scss']
 })
 export class WhisperComposerComponent implements OnInit {
 
@@ -32,15 +32,15 @@ export class WhisperComposerComponent implements OnInit {
     this.captchaVerified = false;
     this.whisper = new Whisper('', '');
 
-    let lastWhisperTime = localStorage.getItem('lastWhisperTime');
+    const lastWhisperTime = localStorage.getItem('lastWhisperTime');
     this.recentlyWhispered = false;
+
     if (lastWhisperTime) {
       this.recentlyWhispered = new Date(parseInt(lastWhisperTime, 10)).getTime() > (Date.now() - TEN_MINUTES);
       if (this.recentlyWhispered) {
-        let timeLeft = ((new Date(parseInt(lastWhisperTime, 10)).getTime() + TEN_MINUTES) - Date.now()) / (1000 * 60);
+        const timeLeft = ((new Date(parseInt(lastWhisperTime, 10)).getTime() + TEN_MINUTES) - Date.now()) / (1000 * 60);
         this.timeUntilNextWhisper = Math.floor(timeLeft);
       }
-      console.log(this.recentlyWhispered, lastWhisperTime);
     }
   }
 

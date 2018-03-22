@@ -1,15 +1,15 @@
-<div class="card">
+<div class="card border-0">
 
-  <div class="card-body">
+  <div class="card-body border-0">
     <div class="row">
-      <div class="col-2 border-right">
-        <h3><i class="fa text-danger" [ngClass]="data.voted ? 'fa-heart' : 'fa-heart-o'" aria-hidden="true" (click)="giveLove()"></i></h3>
+      <div class="col-3 border-right">
+        <h3><i class="fa color-red animated" [ngClass]="data.voted ? 'fa-heart' : 'fa-heart-o'" aria-hidden="true" (click)="giveLove($event)"></i></h3>
         <h6 class="text-center text-danger">{{ data.rating }}</h6>
       </div>
-      <div class="col-10">
+      <div class="col-9">
         <blockquote class="blockquote">
-          <p class="mb-0">{{ data.text }}</p>
-          <footer class="blockquote-footer text-right">By <cite title="Source Title">{{ data.author }}</cite></footer>
+          <p class="mb-0 text">{{ data.text }}</p>
+          <footer class="blockquote-footer text-right author">By <cite title="Source Title">{{ data.author }}</cite></footer>
         </blockquote>
       </div>
     </div>

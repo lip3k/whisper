@@ -12,6 +12,7 @@ import { WhisperComposerComponent } from './whisper-composer/whisper-composer.co
 import {CaptchaService} from './services/captcha.service';
 import {FormsModule} from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
+import { MenuBtnComponent } from './menu/menu-btn/menu-btn.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     WhisperCardComponent,
     WhisperComposerComponent,
-    MenuComponent
+    MenuComponent,
+    MenuBtnComponent
   ],
   imports: [
     BrowserModule,
