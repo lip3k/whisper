@@ -12,7 +12,8 @@ export class WhisperCardComponent implements OnInit {
   @Input() data: Whisper;
   @Output() onLove = new EventEmitter<object>();
 
-  constructor(private api: ApiService, private renderer: Renderer) { }
+  constructor(private api: ApiService, private renderer: Renderer) {
+  }
 
   ngOnInit() {
   }
@@ -22,8 +23,8 @@ export class WhisperCardComponent implements OnInit {
       this.applyAnimation(event, 'jello');
       return;
     }
+    this.applyAnimation(event, 'tada');
     this.api.giveLove(this.data).subscribe(res => {
-      this.applyAnimation(event, 'tada');
       this.markVoted();
       this.onLove.emit(null);
     });
