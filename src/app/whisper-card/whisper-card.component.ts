@@ -23,9 +23,9 @@ export class WhisperCardComponent implements OnInit {
       this.applyAnimation(event, 'jello');
       return;
     }
-    this.applyAnimation(event, 'tada');
-    this.api.giveLove(this.data).subscribe(res => {
+    // this.applyAnimation(event, 'tada');
       this.markVoted();
+    this.api.giveLove(this.data).subscribe(res => {
       this.onLove.emit(null);
     });
   }
