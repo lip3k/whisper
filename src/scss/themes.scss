@@ -1,0 +1,49 @@
+@import './variables';
+
+@mixin themeSetup($base, $lighter, $accent) {
+  .color-primary {
+    color: $base !important;
+  }
+  .color-accent {
+    color: $accent !important;
+  }
+  .background-primary {
+    background-color: $base !important;
+  }
+  .outline-success {
+    border-color: $base !important;
+  }
+  .outline-warning {
+    border-color: $accent !important;
+  }
+
+  .submit-btn {
+    background: none;
+    color: $accent;
+    border: 1px solid $accent;
+  }
+
+  .submit-enabled {
+    background: $accent !important;
+    color: $color-white !important;
+  }
+
+  .theme-logo {
+    color: $lighter !important;
+  }
+}
+
+.theme {
+
+  &--current {
+    @include themeSetup($color-green, $color-light-green, $color-purple);
+  }
+
+  &--green-purple {
+    @include themeSetup($color-green, $color-light-green, $color-purple);
+  }
+
+  &--yellow-red {
+    @include themeSetup($color-yellow, $color-light-yellow, $color-red);
+  }
+}

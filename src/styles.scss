@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'scss/variables';
+@import 'scss/themes.scss';
 
 html {
-  background: linear-gradient($color-primary, darken($color-primary, 10%)) !important;
   min-height: 100vh;
 }
 
 body {
   background: none !important;
+  font-family: $font-primary;
 }
 
 .card {
@@ -15,8 +16,10 @@ body {
   box-shadow: $default-shadow;
 }
 
-.color-blue {
-  color: #1e90ff;
+.clickable {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 320px) {

@@ -1,5 +1,13 @@
-  <div class="card-body" style="padding-right: 0;">
-    <div class="d-flex flex-row-reverse">
-      <app-menu-btn *ngFor="let btn of menuConfig" [icon]="btn.icon" [text]="btn.text" [isActive]="isActiveBtn(btn.text)" (onButtonClicked)="setView(btn.text)" ></app-menu-btn>
+<div class="card border-0" style="margin-bottom: 0;">
+  <div class="card-body">
+    <div class="row">
+      <div class="col"*ngFor="let btn of menuConfig">
+        <app-menu-btn
+          [icon]="btn.icon"
+          [text]="btn.text"
+          [isActive]="isActiveBtn(btn.text)"
+          (onButtonClicked)="setView(btn.text)" ></app-menu-btn>
+      </div>
     </div>
   </div>
+</div>

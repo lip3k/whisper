@@ -1,32 +1,10 @@
+@import '../../../scss/themes';
 @import '../../../scss/variables';
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: darken($color-white, 5%);
-  color: #fff;
-
-  width: 4rem;
-  height: 4rem;
-
-  margin-left: 1rem;
-  border-radius: 0.25rem;
-
-  box-shadow: $default-shadow;
-
-  i {
-    font-size: 2em;
-  }
-
-  transition: $default-transition;
+  text-transform: uppercase;
 }
 
-.active {
-  box-shadow: 0 6px 10px 2px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
-  background-color: #fff;
-  color: $color-accent;
-  border: 0;
+h6 {
+  margin: 0;
 }

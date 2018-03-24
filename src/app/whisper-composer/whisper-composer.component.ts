@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Renderer} from '@angular/core';
 import {CaptchaService} from '../services/captcha.service';
 import {Whisper} from '../models/whisper.model';
 import {ApiService} from '../services/api.service';
@@ -28,7 +28,7 @@ export class WhisperComposerComponent implements OnInit {
   whisper: Whisper;
   captchaVerified: boolean;
 
-  constructor(private captcha: CaptchaService, private api: ApiService) {
+  constructor(private captcha: CaptchaService, private api: ApiService, private renderer: Renderer) {
     this.captchaVerified = false;
     this.whisper = new Whisper('', '');
 
@@ -42,6 +42,9 @@ export class WhisperComposerComponent implements OnInit {
         this.timeUntilNextWhisper = Math.floor(timeLeft);
       }
     }
+
+    //todo: debug
+    this.captchaVerified = true;
   }
 
   ngOnInit() {}
@@ -64,16 +67,14 @@ export class WhisperComposerComponent implements OnInit {
     if (!this.captchaVerified) {
       return false;
     }
-
     return true;
+
   }
 
   submitWhisper() {
     this.api.addWhisper(this.whisper).subscribe(res => {
       this.onNewWhisper.emit(this.whisper);
       localStorage.setItem('lastWhisperTime', Date.now().toString());
-      this.whisperSubmitted = true;
     });
   }
-
 }

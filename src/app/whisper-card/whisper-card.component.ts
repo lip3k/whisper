@@ -16,6 +16,7 @@ export class WhisperCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.voted = this.checkStorageIfVoted();
   }
 
   giveLove(event) {
@@ -23,18 +24,24 @@ export class WhisperCardComponent implements OnInit {
       this.applyAnimation(event, 'jello');
       return;
     }
-    // this.applyAnimation(event, 'tada');
-      this.markVoted();
+      this.applyAnimation(event, 'tada');
     this.api.giveLove(this.data).subscribe(res => {
+      this.markVoted();
+      this.saveVoteToStorage();
       this.onLove.emit(null);
     });
   }
 
+  saveVoteToStorage() {
+    localStorage.setItem(this.data._id, 'true');
+  }
+
+  checkStorageIfVoted() {
+    return localStorage.getItem(this.data._id) !== null;
+  }
+
   applyAnimation(event: any, animation: string) {
     this.renderer.setElementClass(event.target, animation, true);
-    setTimeout(() => {
-      this.renderer.setElementClass(event.target, animation, false);
-    }, 1000);
   }
 
   markVoted() {

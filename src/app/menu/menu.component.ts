@@ -12,26 +12,26 @@ export class MenuComponent implements OnInit {
 
   menuConfig = [
     {
-      text: 'Compose',
-      icon: 'pencil',
-      action: this.setComposeView()
+      text: 'New',
+      icon: 'list',
+      action: this.setBrowseView()
     },
     {
-      text: 'Best',
+      text: 'Top',
       icon: 'star',
       action: this.setBrowseView()
     },
     {
-      text: 'Browse',
-      icon: 'list',
-      action: this.setBrowseView()
+      text: 'Add',
+      icon: 'pencil',
+      action: this.setComposeView()
     }
   ];
 
   constructor() {}
 
   ngOnInit() {
-    this.setView('Browse');
+    this.setView('New');
   }
 
   setComposeView() {
@@ -44,15 +44,6 @@ export class MenuComponent implements OnInit {
 
   setView(viewName: string) {
     this.activeView = viewName;
-
-    switch (viewName) {
-      case 'Browse':
-        this.setBrowseView();
-        break;
-      case 'Compose':
-        this.setComposeView();
-        break;
-    }
 
     this.onChangeView.emit(this.activeView);
   }

@@ -2,9 +2,9 @@
 
   <div class="card-body border-0">
     <div class="row">
-      <div class="col-3 border-right">
-        <h3><i class="fa color-red animated text-center" [ngClass]="data.voted ? 'fa-heart' : 'fa-heart-o'" aria-hidden="true" (mousedown)="giveLove($event)"></i></h3>
-        <h6 class="text-center text-danger">{{ data.rating }}</h6>
+      <div class="col-3 border-right color-accent">
+        <h2 class="text-center" (mousedown)="giveLove($event)"><span class="animated fa" [ngClass]="data.voted ? 'fa-star' : 'fa-star-o'" aria-hidden="true"></span></h2>
+        <h6 class="text-center">{{ data.rating }}</h6>
       </div>
       <div class="col-9">
         <blockquote class="blockquote">

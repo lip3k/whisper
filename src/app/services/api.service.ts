@@ -4,7 +4,6 @@ import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angul
 import {Whisper} from '../models/whisper.model';
 
 const API_URL = 'https://whispers-api.herokuapp.com';
-// const API_URL = 'http://127.0.0.1:3000';
 
 @Injectable()
 export class ApiService {
@@ -25,7 +24,7 @@ export class ApiService {
   }
 
   giveLove(whisper: Whisper) {
-    return this.http.put(`${API_URL}/giveLove/${whisper._id}`, {}).map(res => res.json());
+    return this.http.get(`${API_URL}/giveLove/${whisper._id}`).map(res => res.json());
   }
 
 

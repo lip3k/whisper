@@ -1,5 +1,10 @@
 @import '../../scss/variables';
 
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -19,8 +24,4 @@
 
   border-radius: 0.25rem;
   background-color: rgba(255,255,255,.95);
-}
-
-.invalid {
-  border-color: $color-danger;
 }

@@ -1,8 +1,7 @@
-<!--<div class="col text-center" [class.active]="isActive" (click)="click()">-->
-  <!--<h4 style="margin: 0">{{ text }}</h4>-->
-  <!--<i class="fa" [ngClass]="'fa-' + icon" aria-hidden="true"></i>-->
-<!--</div>-->
-<div class="button" [class.active]="isActive" (click)="click()">
-  <i class="fa" [ngClass]="'fa-' + icon" aria-hidden="true"></i>
-</div>
+<div class="text-center button clickable" (click)="click()">
+  <h6 [class.color-accent]="isActive">
+    <!--<i class="fa" [ngClass]="'fa-' + icon" aria-hidden="true"></i>-->
+    {{ text }}
+  </h6>
 
+</div>
