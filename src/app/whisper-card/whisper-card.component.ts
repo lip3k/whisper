@@ -9,14 +9,20 @@ import {ApiService} from '../services/api.service';
 })
 export class WhisperCardComponent implements OnInit {
 
+  @Input() index;
   @Input() data: Whisper;
   @Output() onLove = new EventEmitter<object>();
+
+  visible: boolean;
 
   constructor(private api: ApiService, private renderer: Renderer) {
   }
 
   ngOnInit() {
     this.data.voted = this.checkStorageIfVoted();
+    setTimeout(() => {
+      this.visible = true;
+    }, this.index * 200);
   }
 
   giveLove(event) {

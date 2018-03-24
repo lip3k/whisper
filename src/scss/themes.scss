@@ -36,7 +36,15 @@
 .theme {
 
   &--current {
-    @include themeSetup($color-green, $color-light-green, $color-purple);
+    @include themeSetup(darken($color-white, 5%), $color-light-green, $color-purple);
+  }
+
+  &--silver-red {
+    @include themeSetup(darken($color-white, 5%), $color-white, $color-red);
+  }
+
+  &--dark-pink {
+    @include themeSetup($color-black, $color-light-black, $color-skin);
   }
 
   &--green-purple {

@@ -3,29 +3,28 @@
     <div class="container sticky-top menu-container">
       <app-menu (onChangeView)="handleViewChange($event)"></app-menu>
     </div>
-    <div class="container" style="margin-top: 0.5rem;">
-      <ng-container *ngIf="activeView && whispers; else loader" >
+    <div class="container" *ngIf="activeView">
+      <div class="bottom-logo theme-logo animated fadeIn" (click)="randomTheme($event)">
+        whisper
+      </div>
+    </div>
+    <div class="container animated fadeIn" style="margin-top: 0.5rem;">
+      <ng-container *ngIf="activeView && whispers; else loader">
         <ng-container [ngSwitch]="activeView" *ngIf="whispers">
           <app-whisper-composer *ngSwitchCase="'Add'" (onNewWhisper)="newWhisper($event)"></app-whisper-composer>
           <ng-container *ngSwitchCase="'New'">
-            <app-whisper-card *ngFor="let whisper of whispers" [data]="whisper" (onLove)="getWhispers()"></app-whisper-card>
+            <app-whisper-card *ngFor="let whisper of whispers; let i = index;" [data]="whisper" [index]="i" (onLove)="getWhispers()"></app-whisper-card>
           </ng-container>
           <ng-container *ngSwitchCase="'Top'">
             <app-whisper-card *ngFor="let whisper of sortByRating(whispers)" [data]="whisper" (onLove)="getWhispers()"></app-whisper-card>
           </ng-container>
         </ng-container>
-        <div class="bottom-logo theme-logo" (click)="randomTheme()">
-          whisper
-        </div>
       </ng-container>
 
 
       <ng-template #loader>
         <div class="loader-container">
           <div class="loader">Loading...</div>
-          <div class="bottom-logo theme-logo pull-bottom">
-            whisper
-          </div>
         </div>
       </ng-template>
     </div>

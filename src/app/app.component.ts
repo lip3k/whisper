@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { ApiService } from './services/api.service';
+import {Component, Input, OnInit, Renderer} from '@angular/core';
+import {ApiService} from './services/api.service';
 import {Whisper} from './models/whisper.model';
 
 @Component({
@@ -14,14 +14,18 @@ export class AppComponent implements OnInit {
 
   themes = [
     'yellow-red',
-    'green-purple'
-    ];
+    'green-purple',
+    'dark-pink',
+    'silver-red'
+  ];
   activeTheme: string;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private renderer: Renderer) {
+
+  }
 
   ngOnInit() {
-    this.randomTheme();
+    this.activeTheme = 'silver-red';
     this.getWhispers();
   }
 
@@ -46,7 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   sortByRating(whispers: Whisper[]) {
-    return whispers.slice().sort((a,b) => {
+    return whispers.slice().sort((a, b) => {
       if (a.rating < b.rating) {
         return 1;
       }
@@ -59,8 +63,19 @@ export class AppComponent implements OnInit {
     });
   }
 
-  randomTheme() {
+  randomTheme(event = null) {
     let randomNumber = Math.floor(Math.random() * this.themes.length);
-    this.activeTheme = this.themes[randomNumber];
+    let newTheme = this.themes[randomNumber];
+    if (newTheme === this.activeTheme) {
+      this.randomTheme(event);
+      return;
+    }
+    this.activeTheme = newTheme;
+    if (event) {
+      this.renderer.setElementClass(event.target, 'tada', true);
+      setTimeout(() => {
+        this.renderer.setElementClass(event.target, 'tada', false);
+      }, 500);
+    }
   }
 }

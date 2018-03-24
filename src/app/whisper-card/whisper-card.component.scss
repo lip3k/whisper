@@ -4,6 +4,10 @@
   color: $color-text-primary;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 .author {
   color: $color-text-dim;
 }
