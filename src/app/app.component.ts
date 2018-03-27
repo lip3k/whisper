@@ -34,9 +34,7 @@ export class AppComponent implements OnInit {
     this.loadTheme();
     this.getNewWhispers();
 
-    setTimeout(() => {
-      this.showPointer = true;
-    }, 3000);
+    this.showThemeTip();
   }
 
   getNewWhispers(index: number = 0) {
@@ -86,7 +84,7 @@ export class AppComponent implements OnInit {
       window.scroll(0, 0);
     }, 400);
   }
-np
+
   randomTheme(event = null) {
     let randomNumber = Math.floor(Math.random() * this.themes.length);
     let newTheme = this.themes[randomNumber];
@@ -127,5 +125,16 @@ np
         return toast.text !== text;
       });
     }, 750);
+  }
+
+  showThemeTip() {
+    if (localStorage.getItem('tipGiven')) {
+      return;
+    }
+
+    setTimeout(() => {
+      this.addToast('Click on logo to change theme!', true);
+      localStorage.setItem('tipGiven', 'true');
+    }, 2000);
   }
 }

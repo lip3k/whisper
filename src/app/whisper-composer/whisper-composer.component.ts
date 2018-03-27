@@ -71,4 +71,6 @@ export class WhisperComposerComponent implements OnInit {
     console.log('save id to storage', id);
     localStorage.setItem(id, 'true');
   }
+
+
 }
