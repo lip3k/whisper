@@ -1,4 +1,4 @@
-<div class="card border-0">
+<div class="card border-0 animated bounceIn">
   <div class="card-body">
     <div class="overlay text-center" *ngIf="recentlyWhispered && !whisperSubmitted">
       <h1 class="display-1"><i class="fa fa-ban" aria-hidden="true"></i></h1>
@@ -14,7 +14,9 @@
         <textarea class="form-control" [ngClass]="whisper.text.length < minWhisperLength ? 'outline-warning' : 'outline-success'" id="whisperText" name="whisperText" #whisperText rows="3" [maxlength]="maxWhisperLength" [(ngModel)]="whisper.text"></textarea>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" [ngClass]="whisper.text.length < minWhisperLength ? 'outline-warning' : 'outline-success'" id="whisperAuthor" name="whisperAuthor" #whisperAuthor placeholder="Author" [(ngModel)]="whisper.author" [minlength]="minAuthorLength" [maxlength]="maxAuthorLength">
+        <label for="whisperText">Author (<em>Anonymous</em> if empty)</label>
+
+        <input type="text" class="form-control" [ngClass]="whisper.author !== '' && whisper.author.length < minAuthorLength ? 'outline-warning' : 'outline-success'" id="whisperAuthor" name="whisperAuthor" #whisperAuthor placeholder="Author" [(ngModel)]="whisper.author" [minlength]="minAuthorLength" [maxlength]="maxAuthorLength">
       </div>
       <div class="form-group">
         <div class="g-recaptcha">

@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class MenuComponent implements OnInit {
 
   @Output() onChangeView = new EventEmitter<string>();
-  activeView: string;
+  @Input() activeView: string;
 
   menuConfig = [
     {
@@ -44,7 +44,7 @@ export class MenuComponent implements OnInit {
 
   setView(viewName: string) {
     this.activeView = viewName;
-
+    window.scroll(0, 0);
     this.onChangeView.emit(this.activeView);
   }
 

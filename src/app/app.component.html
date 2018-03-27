@@ -1,23 +1,44 @@
 <div [ngClass]="'theme--' + activeTheme">
   <div class="background background-primary">
     <div class="container sticky-top menu-container">
-      <app-menu (onChangeView)="handleViewChange($event)"></app-menu>
+      <app-menu [activeView]="activeView" (onChangeView)="handleViewChange($event)"></app-menu>
     </div>
-    <div class="container" *ngIf="activeView">
+    <div class="container" *ngIf="toasts.length > 0">
+      <ng-container *ngFor="let toast of toasts">
+        <app-toast [data]="toast" (onToastExit)="removeToast($event)"></app-toast>
+      </ng-container>
+    </div>
+    <div class="container" *ngIf="activeView && activeView !== 'Add' && toasts.length === 0">
       <div class="bottom-logo theme-logo animated fadeIn" (click)="randomTheme($event)">
-        whisper
+        <span>
+          whisper
+        </span>
       </div>
     </div>
     <div class="container animated fadeIn" style="margin-top: 0.5rem;">
       <ng-container *ngIf="activeView && whispers; else loader">
         <ng-container [ngSwitch]="activeView" *ngIf="whispers">
+
           <app-whisper-composer *ngSwitchCase="'Add'" (onNewWhisper)="newWhisper($event)"></app-whisper-composer>
+
           <ng-container *ngSwitchCase="'New'">
-            <app-whisper-card *ngFor="let whisper of whispers; let i = index;" [data]="whisper" [index]="i" (onLove)="getWhispers()"></app-whisper-card>
+            <app-whisper-card *ngFor="let whisper of whispers; let i = index;" [data]="whisper" [index]="i" (onLove)="handleVote($event)"></app-whisper-card>
           </ng-container>
+
           <ng-container *ngSwitchCase="'Top'">
-            <app-whisper-card *ngFor="let whisper of sortByRating(whispers)" [data]="whisper" (onLove)="getWhispers()"></app-whisper-card>
+            <app-whisper-card *ngFor="let whisper of whispers; let i = index;" [data]="whisper" [index]="i" (onLove)="handleVote($event)"></app-whisper-card>
           </ng-container>
+
+          <div class="card border-0 animated" *ngIf="activeView !== 'Add' && moreToLoad" (click)="loadMoreWhispers()">
+            <div class="card-body border-0">
+              <div class="row">
+                <div class="col text-center text-uppercase">
+                  Load more
+                </div>
+              </div>
+            </div>
+          </div>
+
         </ng-container>
       </ng-container>
 

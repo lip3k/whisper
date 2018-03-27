@@ -6,6 +6,7 @@ export class Whisper {
   postedOn: number;
   rating = 0;
   voted: boolean;
+  comments: Comment[];
   voters: string[] = [];
 
   constructor(text: string, author: string) {

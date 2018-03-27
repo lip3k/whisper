@@ -17,6 +17,20 @@
     border-color: $accent !important;
   }
 
+  .toast-success {
+    * {
+      color: $color-green;
+    }
+    background-color: lighten($color-light-green, 35%);
+  }
+
+  .toast-error {
+    * {
+      color: $color-red;
+    }
+    background-color: lighten($color-light-red, 30%);
+  }
+
   .submit-btn {
     background: none;
     color: $accent;
@@ -29,7 +43,8 @@
   }
 
   .theme-logo {
-    color: $lighter !important;
+    color: lighten($lighter, 10%) !important;
+    text-shadow: 0 1px 0 darken($base, 10%);
   }
 }
 

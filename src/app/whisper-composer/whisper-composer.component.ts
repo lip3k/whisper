@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output, Renderer} from '@angular/core';
-import {CaptchaService} from '../services/captcha.service';
-import {Whisper} from '../models/whisper.model';
-import {ApiService} from '../services/api.service';
+import {CaptchaService} from '../_services/captcha.service';
+import {Whisper} from '../_models/whisper.model';
+import {ApiService} from '../_services/api.service';
 
 const TEN_MINUTES = 10 * 60 * 1000;
 
@@ -42,9 +42,9 @@ export class WhisperComposerComponent implements OnInit {
         this.timeUntilNextWhisper = Math.floor(timeLeft);
       }
     }
-
-    //todo: debug
-    this.captchaVerified = true;
+    //
+    // //todo: debug
+    // this.captchaVerified = true;
   }
 
   ngOnInit() {}
@@ -52,15 +52,12 @@ export class WhisperComposerComponent implements OnInit {
   verifyCaptcha(captchaResponse: string) {
     this.captcha.verify(captchaResponse).subscribe(res => {
       this.captchaVerified = res.success;
+      console.log(res.success);
     });
   }
 
   validateFields(): boolean {
     if (this.whisper.text.length < this.minWhisperLength) {
-      return false;
-    }
-
-    if (this.whisper.author.length < this.minAuthorLength) {
       return false;
     }
 
@@ -73,8 +70,14 @@ export class WhisperComposerComponent implements OnInit {
 
   submitWhisper() {
     this.api.addWhisper(this.whisper).subscribe(res => {
-      this.onNewWhisper.emit(this.whisper);
       localStorage.setItem('lastWhisperTime', Date.now().toString());
+      this.saveVoteToStorage(res._id);
+      this.onNewWhisper.emit(res);
     });
+  }
+
+  saveVoteToStorage(id) {
+    console.log('save id to storage', id);
+    localStorage.setItem(id, 'true');
   }
 }

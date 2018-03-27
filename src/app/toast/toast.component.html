@@ -1,0 +1,9 @@
+<div class="card border-0 animated bounceIn" #toast [ngClass]="data.success ? 'toast-success' : 'toast-error'">
+  <div class="card-body">
+    <div class="row">
+      <div class="col text-center">
+        <i class="fa" [ngClass]="data.success ? 'fa-check' : 'fa-times'" aria-hidden="true"></i> {{ data.text }}
+      </div>
+    </div>
+  </div>
+</div>

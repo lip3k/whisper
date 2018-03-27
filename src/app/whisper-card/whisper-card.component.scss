@@ -1,13 +1,28 @@
 @import '../../scss/variables';
+@import '../../scss/utils';
 
 .text {
   color: $color-text-primary;
 }
 
-.hidden {
-  opacity: 0;
+.meta {
+  color: $color-text-dim;
+  opacity: 0.6;
+  font-size: 0.85em;
 }
 
-.author {
-  color: $color-text-dim;
+.inline-list {
+  list-style: none;
+  li {
+    display: inline-block;
+    float: right;
+    margin-left: 0.5rem;
+  }
+}
+
+.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 }

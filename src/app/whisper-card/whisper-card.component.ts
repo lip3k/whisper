@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, Renderer} from '@angular/core';
-import {Whisper} from '../models/whisper.model';
-import {ApiService} from '../services/api.service';
+import {Whisper} from '../_models/whisper.model';
+import {ApiService} from '../_services/api.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-whisper-card',
@@ -14,6 +15,9 @@ export class WhisperCardComponent implements OnInit {
   @Output() onLove = new EventEmitter<object>();
 
   visible: boolean;
+  ratingVisible: boolean;
+  textVisible: boolean;
+  metaVisible: boolean;
 
   constructor(private api: ApiService, private renderer: Renderer) {
   }
@@ -22,7 +26,16 @@ export class WhisperCardComponent implements OnInit {
     this.data.voted = this.checkStorageIfVoted();
     setTimeout(() => {
       this.visible = true;
-    }, this.index * 200);
+    }, this.index * 50);
+    setTimeout(() => {
+      this.ratingVisible = true;
+    }, (this.index * 50) + 150);
+    setTimeout(() => {
+      this.textVisible = true;
+    }, (this.index * 50) + 250);
+    setTimeout(() => {
+      this.metaVisible = true;
+    }, (this.index * 50) + 350);
   }
 
   giveLove(event) {
@@ -48,6 +61,10 @@ export class WhisperCardComponent implements OnInit {
 
   applyAnimation(event: any, animation: string) {
     this.renderer.setElementClass(event.target, animation, true);
+  }
+
+  getDisplayDate(timestamp: number) {
+    return moment(timestamp).format('DD/MM/YYYY');
   }
 
   markVoted() {

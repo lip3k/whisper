@@ -1,7 +1,7 @@
 <div class="text-center button clickable" (click)="click()">
-  <h6 [class.color-accent]="isActive">
+  <h5 class="animated" style="margin: 0;" [ngClass]="{ 'rubberBand color-accent' : isActive }">
     <!--<i class="fa" [ngClass]="'fa-' + icon" aria-hidden="true"></i>-->
     {{ text }}
-  </h6>
+  </h5>
 
 </div>
