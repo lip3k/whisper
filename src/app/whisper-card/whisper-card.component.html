@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-2 border-right color-accent">
         <div (mousedown)="giveLove($event)"  class="animated center" [ngClass]="textVisible ? 'bounceIn' : 'hidden'">
-          <h2 class="text-center animated" [ngClass]="ratingVisible ? 'bounceIn' : 'hidden'"><span class="animated fa" [ngClass]="data.voted ? 'fa-star' : 'fa-star-o'" aria-hidden="true"></span></h2>
+          <h2 class="text-center clickable animated" [ngClass]="ratingVisible ? 'bounceIn' : 'hidden'"><span class="animated fa" [ngClass]="data.voted ? 'fa-star' : 'fa-star-o'" aria-hidden="true"></span></h2>
           <h6 class="text-center animated" [ngClass]="ratingVisible ? 'bounceIn' : 'hidden'">{{ data.rating }}</h6>
         </div>
         <!--<hr>-->

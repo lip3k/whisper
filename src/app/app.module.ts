@@ -15,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuBtnComponent } from './menu/menu-btn/menu-btn.component';
 import { ToastComponent } from './toast/toast.component';
 import {CommonModule} from "@angular/common";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {CommonModule} from "@angular/common";
     WhisperComposerComponent,
     MenuComponent,
     MenuBtnComponent,
-    ToastComponent
+    ToastComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

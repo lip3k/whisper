@@ -1,0 +1,27 @@
+@import './../../scss/variables.scss';
+
+.center {
+  height: 60px;
+  width: 200px;
+  margin: 0 auto 1rem;
+}
+
+.copyright {
+  font-family: $font-display;
+  font-weight: lighter;
+}
+
+.col {
+  position: relative;
+}
+
+i {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.smaller-icon {
+  bottom: 6px;
+}

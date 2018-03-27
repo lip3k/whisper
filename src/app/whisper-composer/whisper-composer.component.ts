@@ -5,7 +5,6 @@ import {ApiService} from '../_services/api.service';
 
 const TEN_MINUTES = 10 * 60 * 1000;
 
-
 @Component({
   selector: 'app-whisper-composer',
   templateUrl: './whisper-composer.component.html',
@@ -42,9 +41,6 @@ export class WhisperComposerComponent implements OnInit {
         this.timeUntilNextWhisper = Math.floor(timeLeft);
       }
     }
-    //
-    // //todo: debug
-    // this.captchaVerified = true;
   }
 
   ngOnInit() {}
@@ -60,12 +56,7 @@ export class WhisperComposerComponent implements OnInit {
     if (this.whisper.text.length < this.minWhisperLength) {
       return false;
     }
-
-    if (!this.captchaVerified) {
-      return false;
-    }
-    return true;
-
+    return this.captchaVerified;
   }
 
   submitWhisper() {

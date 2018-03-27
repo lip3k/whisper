@@ -29,7 +29,7 @@
             <app-whisper-card *ngFor="let whisper of whispers; let i = index;" [data]="whisper" [index]="i" (onLove)="handleVote($event)"></app-whisper-card>
           </ng-container>
 
-          <div class="card border-0 animated" *ngIf="activeView !== 'Add' && moreToLoad" (click)="loadMoreWhispers()">
+          <div class="card border-0 animated" *ngIf="activeView !== 'Add' && moreToLoad && whispers.length > 0" (click)="loadMoreWhispers()">
             <div class="card-body border-0">
               <div class="row">
                 <div class="col text-center text-uppercase">
@@ -38,6 +38,7 @@
               </div>
             </div>
           </div>
+
 
         </ng-container>
       </ng-container>
@@ -48,6 +49,7 @@
           <div class="loader">Loading...</div>
         </div>
       </ng-template>
+      <app-footer [class.pull-bottom]="!(activeView && whispers.length > 0)"></app-footer>
     </div>
   </div>
 </div>
