@@ -1,4 +1,4 @@
-# Whisper - short, anonymous posts
+# Whisper
 
 A simple Angular 5 project done for fun.
 
