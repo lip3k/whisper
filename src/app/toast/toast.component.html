@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col text-center">
-        <i class="fa" [ngClass]="data.success ? 'fa-check' : 'fa-times'" aria-hidden="true"></i> {{ data.text }}
+        <i class="fa" [ngClass]="data.success ? 'fa-check' : 'fa-times'" aria-hidden="true"></i><span [innerHTML]="data.text"></span>
       </div>
     </div>
   </div>

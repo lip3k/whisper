@@ -18,8 +18,8 @@ export class WhisperComposerComponent implements OnInit {
   timeUntilNextWhisper: number;
   whisperSubmitted: boolean;
 
-  minAuthorLength = 4;
-  maxAuthorLength = 26;
+  minAuthorLength = 2;
+  maxAuthorLength = 14;
 
   minWhisperLength = 10;
   maxWhisperLength = 120;
@@ -68,9 +68,6 @@ export class WhisperComposerComponent implements OnInit {
   }
 
   saveVoteToStorage(id) {
-    console.log('save id to storage', id);
     localStorage.setItem(id, 'true');
   }
-
-
 }

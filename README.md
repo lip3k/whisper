@@ -1,27 +1,24 @@
-# Whisper
+# Whisper - short, anonymous posts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+A simple Angular 5 project done for fun.
 
-## Development server
+Twitter + Reddit + anonymous posting (reCaptcha) = Whisper
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Implemented
 
-## Code scaffolding
+- Switch between views
+- Fetch whispers from API
+- Browse new and best
+- Publish new whisper
+- Rate
+- Change themes (click on 'Whisper' logo)
+- Save and load selected theme from browser's local storage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## To do
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Comment system
+- Ability to flag posts as offensive
+- Offensive posts' content will be hidden by default, able to view on click
+- Daily stats, maybe a little sparkline somewhere on the screen
+- ???
+s

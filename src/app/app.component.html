@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="container animated fadeIn" style="margin-top: 0.5rem;">
-      <ng-container *ngIf="activeView && whispers; else loader">
+      <ng-container *ngIf="activeView == 'Add' || whispers.length > 0; else loader">
         <ng-container [ngSwitch]="activeView" *ngIf="whispers">
 
           <app-whisper-composer *ngSwitchCase="'Add'" (onNewWhisper)="newWhisper($event)"></app-whisper-composer>
@@ -49,7 +49,7 @@
           <div class="loader">Loading...</div>
         </div>
       </ng-template>
-      <app-footer [class.pull-bottom]="!(activeView && whispers.length > 0)"></app-footer>
+      <app-footer [class.pull-bottom]="!(activeView && whispers.length > 0)" style="z-index: -1;"></app-footer>
     </div>
   </div>
 </div>

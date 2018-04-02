@@ -13,10 +13,10 @@ const LIMIT = 5;
 export class AppComponent implements OnInit {
 
   toasts: Toast[] = [];
+
   whispers: Whisper[] = [];
   activeView: string;
 
-  showPointer: boolean;
   apiLoadIndex = 0;
   moreToLoad: boolean;
 
@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loadTheme();
     this.getNewWhispers();
-
     this.showThemeTip();
   }
 
@@ -51,7 +50,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  loadWhispers(viewName: string) {
+  loadWhispersForView(viewName: string) {
     switch(viewName) {
       case 'New':
         this.getNewWhispers(this.apiLoadIndex);
@@ -64,23 +63,22 @@ export class AppComponent implements OnInit {
 
   loadMoreWhispers() {
     this.apiLoadIndex += 1;
-    this.loadWhispers(this.activeView);
+    this.loadWhispersForView(this.activeView);
   }
 
   newWhisper(whisper) {
+    this.addToast('Success', true);
     this.handleViewChange('New');
-    whisper.voted = true;
-    this.whispers = [whisper].concat(this.whispers);
-    this.addToast('New toast added', true);
   }
 
   handleViewChange(viewName: string) {
     this.activeView = null;
+
     setTimeout(() => {
       this.activeView = viewName;
       this.whispers = [];
       this.apiLoadIndex = 0;
-      this.loadWhispers(viewName);
+      this.loadWhispersForView(viewName);
       window.scroll(0, 0);
     }, 400);
   }
@@ -94,6 +92,7 @@ export class AppComponent implements OnInit {
     }
     this.activeTheme = newTheme;
     this.saveTheme();
+
     if (event) {
       this.renderer.setElementClass(event.target, 'tada', true);
       setTimeout(() => {
@@ -115,10 +114,6 @@ export class AppComponent implements OnInit {
     this.toasts = [new Toast(text, success)].concat(this.toasts);
   }
 
-  handleVote(whisper) {
-    console.log('lots of love');
-  }
-
   removeToast(text) {
     setTimeout(() => {
       this.toasts = this.toasts.filter(toast => {
@@ -133,7 +128,7 @@ export class AppComponent implements OnInit {
     }
 
     setTimeout(() => {
-      this.addToast('Click on logo to change theme!', true);
+      this.addToast('Tap on logo', true);
       localStorage.setItem('tipGiven', 'true');
     }, 2000);
   }
