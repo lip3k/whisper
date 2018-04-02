@@ -13,6 +13,7 @@ Twitter + Reddit + anonymous posting (reCaptcha) = Whisper
 - Rate
 - Change themes (click on 'Whisper' logo)
 - Save and load selected theme from browser's local storage
+- Display feedback and status messages (toast)
 
 ## To do
 
@@ -21,4 +22,3 @@ Twitter + Reddit + anonymous posting (reCaptcha) = Whisper
 - Offensive posts' content will be hidden by default, able to view on click
 - Daily stats, maybe a little sparkline somewhere on the screen
 - ???
-s
