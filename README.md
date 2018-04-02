@@ -7,7 +7,7 @@ Twitter + Reddit + anonymous posting (reCaptcha) = Whisper
 ## Implemented
 
 - Switch between views
-- Fetch whispers from API [API in different repo](https://github.com/lip3k/whisper_api)
+- Fetch whispers from API [(API repo here)](https://github.com/lip3k/whisper_api)
 - Browse new and best
 - Publish new whisper
 - Rate
